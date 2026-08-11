@@ -76,6 +76,23 @@ BOSS直聘 communication templates are documented in `references/boss-message-te
 - `references/jd.md` — JD for 妆造师/助理, two variants: Kigurumi mask & 玩偶妆造 (Wiki `ExtrwmJFriW1OYk9zizcoIiknje`)
 - `references/interview-materials.md` — in-person interview flow, 小测 A/B questions, registration form fields, interview template PDF (`assets/interview-template-2608-01.pdf`)
 
+## Talent Pool Database (人才资源库)
+
+Feishu Bitable: Wiki `JFcNwXg8ViiFYbkhBlwcoNSBnAg` (base_token `WUkHb3FdJaAUhYszhwGcZffnn5f`), table `候选人库` (`tblX1YWWNVL46xul`).
+
+Single-table design covering all departments and channels:
+
+- **Identity:** 姓名, 性别, 年龄, 现居城市, 通勤分类 (花桥/安亭 → 外省市)
+- **Source:** 应聘部门 (妆造/研发/设计/市场/运营/职能/其他), 应聘岗位, 来源渠道 (BOSS直聘-邮箱简历, BOSS直聘-直聊, 内推, 主动投递, 猎头, 社交媒体, 招聘会, 其他), 投递日期, 简历附件
+- **Resume summary:** 学历, 工作年限, 最近公司, 最近职位, 职业背景 (幼师/教培, 美术/设计, 美甲美容美发, 化妆/造型, 手工制作, 客服/行政, ...), 期望薪资
+- **Evaluation:** 初筛档位 (A-直接线下面试 / B-线上快筛 / C-不投入 / 待定), 加分信号 (multi), 风险标记 (multi), 初筛备注
+- **Pipeline:** 当前状态 (新投递 → 已打招呼 → 待补充材料 → 线上快筛中 → 已约线下面试 → 已完成面试 → 已发offer → 已入职 / 已淘汰 / 人才储备), 负责人, 最近跟进日期, 下一步行动
+- **System:** 录入时间, 更新时间
+
+Views: `A档-待约线下面试`, `B档-线上快筛`, `人才储备`, `全部候选人`.
+
+Every screened candidate should be recorded here (including C-tier, as 人才储备/已淘汰); the mailbox remains only an ingestion channel, this Base is the source of truth for candidate status.
+
 ## Limitations
 
 - Email bodies contain only summary data; full resumes are in PDF attachments
