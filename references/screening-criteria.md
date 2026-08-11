@@ -1,6 +1,6 @@
 # Screening Criteria — 妆造师 (Makeup Artist)
 
-Source: Feishu Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh` (26/08/07 version)
+Source: Feishu Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh` (26/08/07 version, synced 2026-08-11)
 
 ## BOSS Platform Pre-Screening
 
@@ -11,13 +11,13 @@ Source: Feishu Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh` (26/08/07 version)
 
 | Dimension | Priority (A) | Observable / Quick Screen (B) | Pass (C) |
 |-----------|-------------|-------------------------------|----------|
-| **Commute / Residence** | 花桥、安亭 long-term; stable short commute | 昆山 other areas, Line 11 corridor; ~30-45min | Temporary housing, frequent moves, cross-city long commute |
+| **Commute / Residence** | 花桥、安亭 long-term; stable short commute | 昆山 other areas, Line 11 corridor; ~30-45min | Temporary housing, frequent moves, cross-city long commute; cannot explain long-term residence plan |
 | **Age** | 25-45 preferred; 35+ with stable history strongly considered | 21-25: see education, skills, stability; 45-55: see physical condition, learning ability | <21 ordinarily on hold; >55 ordinarily on hold (special skills excepted) |
 | **Education** | 本科、专科 with normal history: direct interview | 高中/中专/职高: only if clear skills/vocational training/stable history | Low education + no skills + no stable history + vague job goals |
 | **Career Background** | 幼师/教培, 美甲美容美发, 手工制作, 美术培训, 模型/绘画, long-term 行政/客服 | General manufacturing, retail, sales, warehousing — but stable history and can explain transition to handcraft | No relevant ability proof + unstable history |
 | **Vocational Training** | Teaching certs, vocational skill certs, formal art/beauty/handcraft training (big plus) | Self-taught with portfolio, long-term hobby with results | "I like drawing/handcraft" but zero evidence |
 | **Work Stability** | Recent 3-5 years continuous; single job 1-3+ years | 1-2 short stints with reasonable explanation | Multiple jobs <6 months; long unexplained gaps; timeline inconsistencies |
-| **Work Nature** | Clear org, role, duties, results — verifiable | Freelance/part-time/self-employed but specific projects, long duration, real results | Long-term "freelance/gig/startup/studio" as vague substitute for real work history |
+| **Work Nature** | Clear org, role, duties, results — verifiable | Freelance/part-time/self-employed but specific projects, long duration, real results | Long-term "freelance/gig/startup/studio" as vague substitute for real work history; cannot explain actual work content or income source |
 | **Manual Skill Evidence** | Proactively provides portfolio, photos, work samples; nail art, makeup, painting, models, sewing, wig-making, baking decoration all accepted | Related experience but no portfolio yet — can request supplement | Claims "skilled with hands" but zero evidence |
 | **Job-Seeking Stability** | Clearly seeking long-term, stable work; understands location, salary, role | Career switcher with reasonable motivation | "Just looking", "anything works", "free lately so finding a job", "just interested in anime" |
 | **Job Understanding** | Accepts repetitive production, revisions, training, SOP, QA, reference-based reproduction | Limited understanding but willing to learn | Clearly wants free creative expression; can't accept repetition/revision/standardization |
@@ -107,3 +107,8 @@ First four determine "worth interviewing"; last four prevent wasting interview r
 3. 大专及以上 education
 4. Long-term, stable work history
 5. Patient, able to complete repetitive fine operations for extended periods
+
+## Notes
+
+- **Salary negotiation must be done directly by 李明威 (Remi) in BOSS直聘** — do not quote or discuss compensation in other channels to avoid ambiguity.
+- **Practice interview content:** 裁剪水贴、贴水贴 (cutting and applying water decals).

@@ -68,6 +68,14 @@ Produce a structured shortlist with:
 
 BOSS直聘 communication templates are documented in `references/boss-message-templates.md`.
 
+**Important:** Salary/compensation negotiation must be handled directly by 李明威 (Remi) in BOSS直聘 — do not quote salary in other channels.
+
+## Related References
+
+- `references/screening-criteria.md` — full criteria matrix (Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh`)
+- `references/jd.md` — JD for 妆造师/助理, two variants: Kigurumi mask & 玩偶妆造 (Wiki `ExtrwmJFriW1OYk9zizcoIiknje`)
+- `references/interview-materials.md` — in-person interview flow, 小测 A/B questions, registration form fields, interview template PDF (`assets/interview-template-2608-01.pdf`)
+
 ## Limitations
 
 - Email bodies contain only summary data; full resumes are in PDF attachments
