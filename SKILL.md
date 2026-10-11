@@ -1,24 +1,29 @@
-# Kigland HR — Resume Screening for 妆造师 (Makeup Artist)
+# Kigland HR — Resume Screening
 
 ## Overview
 
-This skill automates the initial resume screening workflow for Kigland's 妆造师 (Kigurumi makeup artist) hiring pipeline. It reads incoming BOSS直聘 resume emails via Feishu Mail, cross-references them against documented screening criteria in Feishu Wiki, and produces categorized shortlists.
+This skill automates the initial resume screening workflow for Kigland hiring pipelines across multiple positions (岗位). Each position owns one set of screening criteria, JD, greetings, and interview materials under `positions/<岗位>/`; the workflow below is shared. The position registry is `registry.md`.
 
 ## Prerequisites
 
 - `lark-cli` installed and authenticated (`lark-cli auth login --domain mail --domain docs`)
 - Access to `join@kig.land` mailbox
-- Access to the screening criteria wiki: `HZwIwBImJi4EvckYVMAcWTlHnMh`
+- Access to the screening criteria wiki of the target position (e.g. 妆造师: `HZwIwBImJi4EvckYVMAcWTlHnMh`)
 
 ## Workflow
+
+### Step 0: Select Position
+
+Read `registry.md` and resolve the target position directory `positions/<岗位>/` (via `position.md` for status, Bitable 应聘部门 value, and channels). If the user did not specify a position, ask before screening. All per-position paths below are relative to this directory.
 
 ### Step 1: Load Screening Criteria
 
 ```bash
-lark-cli docs +fetch --doc "HZwIwBImJi4EvckYVMAcWTlHnMh" --doc-format markdown
+lark-cli docs +fetch --doc "<position wiki token from positions/<岗位>/position.md>" --doc-format markdown
 ```
 
-Key dimensions in priority order:
+Then load `positions/<岗位>/screening-criteria.md` for the full criteria matrix. Example — 妆造师 priority order:
+
 1. **Commute/Residence** — 花桥/安亭 preferred, 11号线沿线 acceptable, cross-city long commute rejected
 2. **Work Stability** — 3-5 years continuous, single job 1-3+ years preferred
 3. **Education / Career Background** — 本科/专科 preferred; 幼师/教培/美甲美容美发/手工/美术/客服/行政 are high-match backgrounds
@@ -28,15 +33,13 @@ Key dimensions in priority order:
 7. **Salary / Availability** — Within range, reasonable start date
 8. **Risk Flags** — Frequent job-hopping, competitor conflicts
 
-Refer to `references/screening-criteria.md` for the full criteria matrix.
-
 ### Step 2: Fetch Recent Resume Emails
 
 ```bash
 lark-cli mail +triage --mailbox "join@kig.land" --filter '{"folder":"inbox"}' --max 50 --format json
 ```
 
-Filter to BOSS直聘 resume emails (sender: `cv@service.bosszhipin.com`, subject contains candidate name).
+Filter to BOSS直聘 resume emails (sender: `cv@service.bosszhipin.com`, subject contains candidate name). Positions whose channels differ (直聊, 内推, …) declare this in `position.md`; the email pipeline above applies to all BOSS邮箱简历 positions.
 
 Batch read resume bodies:
 
@@ -50,7 +53,7 @@ Each BOSS直聘 email body contains: `姓名 性别 年龄 城市 学历 经验 
 
 ### Step 3: Categorize Candidates
 
-Apply the three-tier classification from the criteria:
+Apply the three-tier classification from the position's `screening-criteria.md`. Example — 妆造师 tiers:
 
 - **A-tier (Direct In-Person Interview):** 苏州本地 + 本科/大专 + high-match background (幼师/美术教育/美发/长期客服) + reasonable salary
 - **B-tier (Online Quick Screen):** Some strengths but gaps — lower education, average background, career switchers, younger candidates with potential
@@ -58,7 +61,7 @@ Apply the three-tier classification from the criteria:
 
 ### Step 4: Output Analysis
 
-Produce a structured shortlist with:
+Write the structured shortlist to `positions/<岗位>/analysis/YYYY-MM-DD-screening.md` with:
 - Candidate summary table (name, age, education, experience, latest job, salary)
 - Tier classification with rationale
 - Red flag notes
@@ -66,15 +69,22 @@ Produce a structured shortlist with:
 
 ## Message Templates
 
-BOSS直聘 communication templates are documented in `references/boss-message-templates.md`.
+- Shared templates (repeat inquiry, interview invitations, calendar notes, communication questions): `references/shared/boss-message-templates.md`
+- Position-specific greetings and interview instructions: `positions/<岗位>/boss-greetings.md`
 
 **Important:** Salary/compensation negotiation must be handled directly by 李明威 (Remi) in BOSS直聘 — do not quote salary in other channels.
 
 ## Related References
 
-- `references/screening-criteria.md` — full criteria matrix (Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh`)
-- `references/jd.md` — JD for 妆造师/助理, two variants: Kigurumi mask & 玩偶妆造 (Wiki `ExtrwmJFriW1OYk9zizcoIiknje`)
-- `references/interview-materials.md` — in-person interview flow, 小测 A/B questions, registration form fields, interview template PDF (`assets/interview-template-2608-01.pdf`)
+- `registry.md` — position list and status
+- `positions/<岗位>/position.md` — position profile: channels, wiki tokens, material pointers
+- `positions/<岗位>/screening-criteria.md` — per-position criteria matrix (妆造师: Wiki `HZwIwBImJi4EvckYVMAcWTlHnMh`)
+- `positions/<岗位>/jd.md` — per-position JD (妆造师: Kigurumi mask & 玩偶妆造 variants, Wiki `ExtrwmJFriW1OYk9zizcoIiknje`)
+- `positions/<岗位>/interview-notes.md` — position-specific interview content (妆造师: 小测 B, 水贴实践)
+- `references/shared/interview-process.md` — generic in-person interview flow
+- `references/shared/aptitude-test-a.md` — general aptitude test (8 questions)
+- `references/shared/registration-form.md` — on-site registration form fields
+- `positions/_template/` — copy to onboard a new position
 
 ## Talent Pool Database (人才资源库)
 
@@ -89,6 +99,8 @@ Single-table design covering all departments and channels (lean, decision-first 
 Views: `A档-待约线下面试`, `B档-线上快筛`, `人才储备`, `全部候选人`.
 
 Every screened candidate should be recorded here (including C-tier, as 人才储备/已淘汰); the mailbox remains only an ingestion channel, this Base is the source of truth for candidate status.
+
+Multiple positions share this one table — distinguish them via the `应聘部门` field (filter as needed); create position-specific views only when actually required.
 
 ## Limitations
 

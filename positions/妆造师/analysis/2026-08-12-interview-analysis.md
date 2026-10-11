@@ -1,7 +1,7 @@
 # 线上面试分析 — 2026-08-12（妆造岗，3 场）
 
-数据源：飞书 VC 会议逐字稿（智能纪要 normal 路径），落盘于 `analysis/interviews-2026-08-12/`；BOSS 直聘简历 PDF，落盘于 `analysis/resumes/`
-评估基准：`references/jd.md`、`references/screening-criteria.md`、`references/interview-materials.md`
+数据源：飞书 VC 会议逐字稿（智能纪要 normal 路径），落盘于 `interviews-2026-08-12/`；BOSS 直聘简历 PDF，落盘于 `resumes/`
+评估基准：`../jd.md`、`../screening-criteria.md`、`../interview-notes.md` 与 `../../../references/shared/`
 面试官：李明威（Remi）
 
 > **2026-08-13 简历交叉复核已补充**：见文末「简历交叉复核」章节，含修订后评级。
@@ -154,7 +154,7 @@
 
 ## 简历交叉复核（2026-08-13 补充）
 
-简历来源：BOSS 直聘转发至 join@kig.land 的简历邮件（2026-08-12 投递），PDF 与提取文本存于 `analysis/resumes/`。向权龙在 BOSS 上昵称为「不愁」，有两封简历邮件（两版简历）。
+简历来源：BOSS 直聘转发至 join@kig.land 的简历邮件（2026-08-12 投递），PDF 与提取文本存于 `resumes/`。向权龙在 BOSS 上昵称为「不愁」，有两封简历邮件（两版简历）。
 
 ### 邮件摘要层新事实
 
